@@ -53,6 +53,12 @@ export default function App() {
             `https://www.youtube.com/watch?v=kBrPkGRiWJY` or `kBrPkGRiWJY`
           </li>
           <li>It dose support short.</li>
+          <li>
+            Supported websites:{" "}
+            <a href="https://ytdl-org.github.io/youtube-dl/supportedsites.html">
+              https://ytdl-org.github.io/youtube-dl/supportedsites.html
+            </a>
+          </li>
         </ol>
       </footer>
     </div>
