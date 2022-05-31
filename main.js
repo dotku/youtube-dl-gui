@@ -65,13 +65,21 @@ ipcMain.on("youtube-dl", async (_e, args) => {
         mainWindow.webContents.send("fromMain", data.toString());
       } catch (e) {
         console.error(e);
+        mainWindow.webContents.send("fromMain", e.toString());
         youtubeDL.kill();
       }
     });
 
     youtubeDL.stderr.on("data", function (data) {
-      console.log("stderr: " + data.toString());
-      mainWindow.webContents.send("youtube-dl", data.toString());
+      try {
+        console.log("stderr: " + data.toString());
+        mainWindow.webContents.send("youtube-dl", data.toString());
+        mainWindow.webContents.send("fromMain", data.toString());
+      } catch (e) {
+        console.error(e);
+        mainWindow.webContents.send("fromMain", e.toString());
+        youtubeDL.kill();
+      }
     });
   } catch (e) {
     console.error(e);
